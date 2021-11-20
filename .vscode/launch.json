@@ -1,0 +1,32 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "train",
+            "type": "python",
+            "request": "launch",
+            "program": "train.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--gpu-id", "-1",
+                "--loss", "Proxy_Anchor",
+                "--model", "resnet50_cgd",
+                "--embedding-size", "512",
+                "--batch-size", "180",
+                "--lr", "1e-4",
+                "--dataset", "cub",
+                "--warm", "1",
+                "--bn-freeze", "1",
+                "--lr-decay-step", "10",
+                "--gd_config", "SG",
+            ],
+            "env": {
+                "CUDA_VISBLE_DEVICES": "7,6,5",
+            },
+            "cwd": "${workspaceFolder}/code",
+        }
+    ]
+}
