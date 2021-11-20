@@ -1,5 +1,6 @@
 import torch, math, time, argparse, os
 import random, dataset, utils, losses, net
+from net.resnet import Resnet50_CGD
 import numpy as np
 
 from dataset.Inshop import Inshop_Dataset
@@ -93,6 +94,9 @@ parser.add_argument('--l2-norm', default = 1, type = int,
 parser.add_argument('--remark', default = '',
     help = 'Any reamrk'
 )
+parser.add_argument('--gd_config', default='SMG', type=str,
+                    choices=['S', 'M', 'G', 'SM', 'SG', 'MG', 'SMG'],
+                    help='global descriptors config')
 
 args = parser.parse_args()
 
@@ -213,6 +217,8 @@ elif args.model.find('resnet50')+1:
     model = Resnet50(embedding_size=args.sz_embedding, pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze)
 elif args.model.find('resnet101')+1:
     model = Resnet101(embedding_size=args.sz_embedding, pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze)
+elif args.model == 'resnet50_cgd':
+    model = Resnet50_CGD(embedding_size=args.sz_embedding, pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze, gd_config='')
 model = model.cuda()
 
 if args.gpu_id == -1:

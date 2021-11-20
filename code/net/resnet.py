@@ -10,6 +10,7 @@ from torchvision.models import resnet34
 from torchvision.models import resnet50
 from torchvision.models import resnet101
 import torch.utils.model_zoo as model_zoo
+from net.global_descriptor import CGD_GlobalDescriptor
 
 class Resnet18(nn.Module):
     def __init__(self,embedding_size, pretrained=True, is_norm=True, bn_freeze = True):
@@ -249,6 +250,39 @@ class Resnet101(nn.Module):
             
         return x
 
+class Resnet50_CGD(nn.Module):
+    def __init__(self,embedding_size, pretrained=True, is_norm=True, bn_freeze = True, 
+                 gd_config='SMG'):
+        super().__init__()
+
+        self.model = resnet50(pretrained)
+        self.is_norm = is_norm
+        self.embedding_size = embedding_size
+        self.num_ftrs = self.model.fc.in_features
+
+        self.cgd = CGD_GlobalDescriptor(self.num_ftrs, gd_config, embedding_size)
+        self._initialize_weights()
+
+        if bn_freeze:
+            for m in self.model.modules():
+                if isinstance(m, nn.BatchNorm2d):
+                    m.eval()
+                    m.weight.requires_grad_(False)
+                    m.bias.requires_grad_(False)
+
+    def forward(self, x):
+        x = self.model.conv1(x)
+        x = self.model.bn1(x)
+        x = self.model.relu(x)
+        x = self.model.maxpool(x)
+        x = self.model.layer1(x)
+        x = self.model.layer2(x)
+        x = self.model.layer3(x)
+        x = self.model.layer4(x)
+
+        x = self.model.cgd(x)
+
+        return x
+    
     def _initialize_weights(self):
-        init.kaiming_normal_(self.model.embedding.weight, mode='fan_out')
-        init.constant_(self.model.embedding.bias, 0)
+        self.cgd._initialize_weights()
