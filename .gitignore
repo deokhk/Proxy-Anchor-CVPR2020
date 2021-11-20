@@ -1,0 +1,4 @@
+data/
+code/wandb
+**/__pycache__
+*.pyc
