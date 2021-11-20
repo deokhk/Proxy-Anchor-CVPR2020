@@ -207,7 +207,9 @@ else:
 nb_classes = trn_dataset.nb_classes()
 
 # Backbone Model
-if args.model.find('googlenet')+1:
+if args.model == 'resnet50_cgd':
+    model = Resnet50_CGD(embedding_size=args.sz_embedding, pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze, gd_config=args.gd_config)
+elif args.model.find('googlenet')+1:
     model = googlenet(embedding_size=args.sz_embedding, pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze)
 elif args.model.find('bn_inception')+1:
     model = bn_inception(embedding_size=args.sz_embedding, pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze)
@@ -217,8 +219,6 @@ elif args.model.find('resnet50')+1:
     model = Resnet50(embedding_size=args.sz_embedding, pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze)
 elif args.model.find('resnet101')+1:
     model = Resnet101(embedding_size=args.sz_embedding, pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze)
-elif args.model == 'resnet50_cgd':
-    model = Resnet50_CGD(embedding_size=args.sz_embedding, pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze, gd_config='')
 model = model.cuda()
 
 if args.gpu_id == -1:
@@ -355,5 +355,4 @@ for epoch in range(0, args.nb_epochs):
                 else:
                     for i in range(4):
                         f.write("Best Recall@{}: {:.4f}\n".format(10**i, best_recall[i] * 100))
-
     

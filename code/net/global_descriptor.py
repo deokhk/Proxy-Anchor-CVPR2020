@@ -34,6 +34,7 @@ class GlobalDescriptor(nn.Module):
 
 class CGD_GlobalDescriptor(nn.Module):
     def __init__(self, num_ftrs, gd_config, feature_dim):
+        super().__init__()
         n = len(gd_config)
         k = feature_dim // n
         assert feature_dim % n == 0, 'the feature dim should be divided by number of global descriptors'
@@ -62,5 +63,4 @@ class CGD_GlobalDescriptor(nn.Module):
 
     def _initialize_weights(self):
         for main_module in self.main_modules:
-            init.kaiming_normal_(main_module[0].embedding.weight, mode='fan_out')
-            init.constant_(main_module[0].embedding.bias, 0)
+            init.kaiming_normal_(main_module[0].weight, mode='fan_out')
