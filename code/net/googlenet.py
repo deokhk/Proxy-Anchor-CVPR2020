@@ -12,6 +12,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.utils import model_zoo
+from net.global_descriptor import CGD_GlobalDescriptor
 
 __all__ = ['GoogLeNet', 'googlenet']
 
@@ -254,3 +255,63 @@ class googlenet(nn.Module):
     def _initialize_weights(self):
         init.kaiming_normal_(self.model.embedding.weight, mode='fan_out')
         init.constant_(self.model.embedding.bias, 0)
+
+class googlenet_cgd(nn.Module):
+    def __init__(self,embedding_size, pretrained=True, bn_freeze = True, gd_config='SMG'):
+        super().__init__()
+
+        self.model = GoogLeNet()
+        if pretrained:
+            self.model.load_state_dict(model_zoo.load_url(model_urls['googlenet']),strict=False)
+
+        self.transform_input=False
+        self.embedding_size = embedding_size
+        self.num_ftrs = self.model.fc.in_features
+        self.model.embedding = CGD_GlobalDescriptor(self.num_ftrs, gd_config, embedding_size)
+        self.model.gap = nn.AdaptiveAvgPool2d(1)
+        self.model.gmp = nn.AdaptiveMaxPool2d(1)
+        
+        self._initialize_weights()
+        
+        if bn_freeze:
+            for m in self.model.modules():
+                if isinstance(m, nn.BatchNorm2d):
+                    m.eval()
+                    m.weight.requires_grad_(False)
+                    m.bias.requires_grad_(False)
+        
+
+    def forward(self, x):
+        if self.transform_input:
+            x_ch0 = torch.unsqueeze(x[:, 0], 1) * (0.229 / 0.5) + (0.485 - 0.5) / 0.5
+            x_ch1 = torch.unsqueeze(x[:, 1], 1) * (0.224 / 0.5) + (0.456 - 0.5) / 0.5
+            x_ch2 = torch.unsqueeze(x[:, 2], 1) * (0.225 / 0.5) + (0.406 - 0.5) / 0.5
+            x = torch.cat((x_ch0, x_ch1, x_ch2), 1)
+
+        x = self.model.conv1(x)
+        x = self.model.maxpool1(x)
+        x = self.model.conv2(x)
+        x = self.model.conv3(x)
+        x = self.model.maxpool2(x)
+
+        x = self.model.inception3a(x)
+        x = self.model.inception3b(x)
+        x = self.model.maxpool3(x)
+        x = self.model.inception4a(x)
+
+        x = self.model.inception4b(x)
+        x = self.model.inception4c(x)
+        x = self.model.inception4d(x)
+
+        x = self.model.inception4e(x)
+        x = self.model.maxpool4(x)
+        x = self.model.inception5a(x)
+        x = self.model.inception5b(x)
+
+        x = self.model.embedding(x)
+        self.features = x
+
+        return self.features
+
+    def _initialize_weights(self):
+        self.model.embedding._initialize_weights()

@@ -5,6 +5,30 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "train-googlenet_cgd",
+            "type": "python",
+            "request": "launch",
+            "program": "train.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--gpu-id", "-1",
+                "--loss", "Proxy_Anchor",
+                "--model", "googlenet_cgd",
+                "--embedding-size", "512",
+                "--batch-size", "180",
+                "--lr", "1e-4",
+                "--dataset", "cub",
+                "--warm", "1",
+                "--bn-freeze", "1",
+                "--lr-decay-step", "10",
+                "--gd_config", "SMG",
+            ],
+            "env": {
+                "CUDA_VISBLE_DEVICES": "7,6,5",
+            },
+            "cwd": "${workspaceFolder}/code",
+        },
+        {
             "name": "train-resnet50_cgd",
             "type": "python",
             "request": "launch",

@@ -1,5 +1,6 @@
 import torch, math, time, argparse, os
 import random, dataset, utils, losses, net
+from net.googlenet import googlenet_cgd
 from net.resnet import Resnet50_CGD
 import numpy as np
 
@@ -215,6 +216,8 @@ elif args.model == 'resnet50_cgd':
     model = Resnet_CGD(embedding_size=args.sz_embedding, pretrained_model='resnet50', pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze, gd_config=args.gd_config)
 elif args.model == 'resnet101_cgd':
     model = Resnet_CGD(embedding_size=args.sz_embedding, pretrained_model='resnet101', pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze, gd_config=args.gd_config)
+elif args.model == 'googlenet_cgd':
+    model = googlenet_cgd(embedding_size=args.sz_embedding, pretrained=True, bn_freeze = args.bn_freeze, gd_config=args.gd_config)
 elif args.model.find('googlenet')+1:
     model = googlenet(embedding_size=args.sz_embedding, pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze)
 elif args.model.find('bn_inception')+1:
