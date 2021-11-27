@@ -8,6 +8,7 @@
 #SBATCH  --nodes=1
 #SBATCH  --ntasks=1
 #SBATCH  --tasks-per-node=1
+#SBATCH  --cpus-per-task=4
 
 srun -l /bin/hostname
 srun -l /bin/pwd
@@ -17,6 +18,6 @@ module purge
 
 date
 
-sh run-001.sh
+sh run-032.sh
 
 date

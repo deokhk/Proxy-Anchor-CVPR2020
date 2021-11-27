@@ -1,0 +1,16 @@
+0: n13
+0: /home/deokhk/Proxy-Anchor-CVPR2020/code
+0: Sat Nov 27 21:19:29 KST 2021
+Sat Nov 27 21:19:30 KST 2021
+wandb: Currently logged in as: deokhk (use `wandb login --relogin` to force relogin)
+wandb: Tracking run with wandb version 0.12.7
+wandb: Syncing run smooth-oath-19
+wandb: ⭐️ View project at https://wandb.ai/deokhk/cub_ProxyAnchor
+wandb: 🚀 View run at https://wandb.ai/deokhk/cub_ProxyAnchor/runs/1su7y31r
+wandb: Run data is saved locally in /home/deokhk/Proxy-Anchor-CVPR2020/code/wandb/run-20211127_212006-1su7y31r
+wandb: Run `wandb offline` to turn off syncing.
+[34m[1mwandb[0m: [33mWARNING[0m Calling run.save without any arguments is deprecated.Changes to attributes are automatically persisted.
+Downloading: "https://download.pytorch.org/models/googlenet-1378be20.pth" to /home/deokhk/.cache/torch/hub/checkpoints/googlenet-1378be20.pth
+
+Random Sampling
+  0% 0.00/49.7M [00:00<?, ?B/s]  0% 40.0k/49.7M [00:00<15:33, 55.8kB/s]  0% 56.0k/49.7M [00:00<14:31, 59.7kB/s]  1% 312k/49.7M [00:01<02:36, 331kB/s]    1% 360k/49.7M [00:02<05:18, 163kB/s]  2% 936k/49.7M [00:02<01:19, 642kB/s]  2% 1.13M/49.7M [00:17<17:18, 49.1kB/s]  3% 1.59M/49.7M [00:17<09:20, 90.1kB/s]  7% 3.41M/49.7M [00:17<02:27, 328kB/s]  10% 4.75M/49.7M [00:17<01:26, 545kB/s] 15% 7.48M/49.7M [00:18<00:36, 1.20MB/s] 17% 8.70M/49.7M [00:18<00:29, 1.47MB/s] 22% 10.8M/49.7M [00:18<00:19, 2.14MB/s] 24% 11.8M/49.7M [00:20<00:30, 1.30MB/s] 26% 12.9M/49.7M [00:22<00:35, 1.08MB/s] 27% 13.2M/49.7M [00:40<00:35, 1.08MB/s] 27% 13.2M/49.7M [00:55<06:24, 99.6kB/s] 27% 13.2M/49.7M [00:58<07:15, 87.8kB/s] 27% 13.3M/49.7M [01:10<07:15, 87.8kB/s] 27% 13.3M/49.7M [02:44<44:39, 14.3kB/s] 27% 13.3M/49.7M [03:00<44:36, 14.3kB/s]
