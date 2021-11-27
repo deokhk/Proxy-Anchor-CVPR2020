@@ -1,5 +1,6 @@
 #!/bin/bash 
-python train.py --gpu-id 7 \
+CUDA_VISIBLE_DEVICES=7,6 \
+python train.py --gpu-id -1 \
                 --loss Proxy_Anchor \
                 --model resnet50 \
                 --embedding-size 512 \

@@ -260,7 +260,7 @@ class Resnet50_CGD(nn.Module):
         self.embedding_size = embedding_size
         self.num_ftrs = self.model.fc.in_features
 
-        self.cgd = CGD_GlobalDescriptor(self.num_ftrs, gd_config, embedding_size)
+        self.model.embedding = CGD_GlobalDescriptor(self.num_ftrs, gd_config, embedding_size)
         self._initialize_weights()
 
         if bn_freeze:
@@ -280,9 +280,9 @@ class Resnet50_CGD(nn.Module):
         x = self.model.layer3(x)
         x = self.model.layer4(x)
 
-        x = self.model.cgd(x)
+        x = self.model.embedding(x)
 
         return x
     
     def _initialize_weights(self):
-        self.cgd._initialize_weights()
+        self.model.embedding._initialize_weights()

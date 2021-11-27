@@ -36,8 +36,6 @@ class CGD_GlobalDescriptor(nn.Module):
     def __init__(self, num_ftrs, gd_config, feature_dim):
         super().__init__()
         n = len(gd_config)
-        k = feature_dim // n
-        assert feature_dim % n == 0, 'the feature dim should be divided by number of global descriptors'
 
         self.global_descriptors, self.main_modules = [], []
         for i in range(n):
@@ -48,9 +46,10 @@ class CGD_GlobalDescriptor(nn.Module):
             else:
                 p = 3
             self.global_descriptors.append(GlobalDescriptor(p=p))
-            self.main_modules.append(nn.Sequential(nn.Linear(num_ftrs, k, bias=False), L2Norm()))
+            self.main_modules.append(nn.Sequential(nn.Linear(num_ftrs, feature_dim, bias=False), L2Norm()))
         self.global_descriptors = nn.ModuleList(self.global_descriptors)
         self.main_modules = nn.ModuleList(self.main_modules)
+        self.fusion_layer = nn.Linear(n * feature_dim, feature_dim)
 
     def forward(self, x):
         global_descriptors = []
@@ -58,7 +57,9 @@ class CGD_GlobalDescriptor(nn.Module):
             global_descriptor = self.global_descriptors[i](x)
             global_descriptor = self.main_modules[i](global_descriptor)
             global_descriptors.append(global_descriptor)
-        global_descriptors = F.normalize(torch.cat(global_descriptors, dim=-1), dim=-1)
+        global_descriptors = torch.cat(global_descriptors, dim=-1)
+        global_descriptors = self.fusion_layer(global_descriptors)
+        global_descriptors = F.normalize(global_descriptors, dim=-1)
         return global_descriptors
 
     def _initialize_weights(self):
