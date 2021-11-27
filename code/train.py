@@ -97,7 +97,8 @@ parser.add_argument('--remark', default = '',
     help = 'Any reamrk'
 )
 parser.add_argument('--gd_config', default='SMG', type=str,
-                    choices=['S', 'M', 'G', 'SM', 'SG', 'MG', 'SMG'],
+                    choices=['S', 'M', 'G', 'SM', 'SG', 'MG', 'SMG',
+                             's', 'm', 'g', 'sm', 'sg', 'mg', 'smg',],
                     help='global descriptors config')
 parser.add_argument('--experiment_name', default='proxy_anchor', type=str)
 

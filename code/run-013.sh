@@ -9,5 +9,5 @@ python train.py --gpu-id -1 \
                 --warm 1 \
                 --bn-freeze 1 \
                 --lr-decay-step 10 \
-                --gd_config SM \ 
+                --gd_config SM \
                 --experiment_name bn_inception_SM

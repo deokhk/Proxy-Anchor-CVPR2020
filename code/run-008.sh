@@ -9,5 +9,5 @@ python train.py --gpu-id -1 \
                 --warm 5 \
                 --bn-freeze 1 \
                 --lr-decay-step 5 \
-                --gd_config MG \ 
+                --gd_config MG \
                 --experiment_name googlenet_MG

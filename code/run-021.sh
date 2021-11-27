@@ -9,5 +9,5 @@ python train.py --gpu-id -1 \
                 --warm 5 \
                 --bn-freeze 1 \
                 --lr-decay-step 5 \
-                --gd_config sg
+                --gd_config sg \
                 --experiment_name resnet50_cgd-sg
