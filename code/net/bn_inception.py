@@ -5,6 +5,8 @@ import torch.nn.functional as F
 import torch.utils.model_zoo as model_zoo
 import random
 
+from net.global_descriptor import CGD_GlobalDescriptor
+
 __all__ = ['BNInception', 'bn_inception']
 
 """
@@ -528,3 +530,42 @@ class BNInception(nn.Module):
         if self.is_norm:
             x = self.l2_norm(x)
         return x
+
+
+class bn_inception_cgd(nn.Module):
+    def __init__(self, embedding_size, pretrained = True, is_norm=True, bn_freeze = True, gd_config='SMG'):
+        super(bn_inception_cgd, self).__init__()
+        self.model = BNInception(embedding_size, pretrained, is_norm)
+        if pretrained:
+#             weight = model_zoo.load_url('http://data.lip6.fr/cadene/pretrainedmodels/bn_inception-239d2248.pth')
+            weight = model_zoo.load_url('http://data.lip6.fr/cadene/pretrainedmodels/bn_inception-52deb4733.pth')
+            weight = {k: v.squeeze(0) if v.size(0) == 1 else v for k, v in weight.items()}
+            self.model.load_state_dict(weight)
+
+        self.embedding_size = embedding_size       
+        self.num_ftrs = self.model.num_ftrs
+
+        self.model.embedding = CGD_GlobalDescriptor(self.num_ftrs, gd_config, embedding_size)
+        self._initialize_weights()
+        
+        if bn_freeze:
+            for m in self.model.modules():
+                if isinstance(m, nn.BatchNorm2d):
+                    m.eval()
+                    m.weight.requires_grad_(False)
+                    m.bias.requires_grad_(False)
+
+                
+    def forward(self, input):
+        x = self.model.features(input)
+        x = self.model.embedding(x)
+
+        return x
+
+    
+    def _initialize_weights(self):
+        self.model.embedding._initialize_weights()
+
+
+
+

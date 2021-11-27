@@ -1,12 +1,14 @@
 #!/bin/bash 
-CUDA_VISIBLE_DEVICES=7,6 \
+CUDA_VISIBLE_DEVICES=7,6,5,4 \
 python train.py --gpu-id -1 \
                 --loss Proxy_Anchor \
-                --model resnet50 \
+                --model bn_inception_cgd \
                 --embedding-size 512 \
                 --batch-size 180 \
                 --lr 1e-4 \
                 --dataset cub \
                 --warm 1 \
                 --bn-freeze 1 \
-                --lr-decay-step 10
+                --lr-decay-step 10 \
+                --gd_config SMG
+                
