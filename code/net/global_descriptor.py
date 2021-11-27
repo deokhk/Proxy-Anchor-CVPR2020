@@ -39,12 +39,14 @@ class CGD_GlobalDescriptor(nn.Module):
 
         self.global_descriptors, self.main_modules = [], []
         for i in range(n):
-            if gd_config[i] == 'S':
+            if gd_config[i].upper() == 'S':
                 p = 1
-            elif gd_config[i] == 'M':
+            elif gd_config[i].upper() == 'M':
                 p = float('inf')
-            else:
+            elif gd_config[i].upper() == 'G':
                 p = 3
+            else:
+                raise KeyError('no such gd_config')
             self.global_descriptors.append(GlobalDescriptor(p=p))
             self.main_modules.append(nn.Sequential(nn.Linear(num_ftrs, feature_dim, bias=False), L2Norm()))
         self.global_descriptors = nn.ModuleList(self.global_descriptors)
