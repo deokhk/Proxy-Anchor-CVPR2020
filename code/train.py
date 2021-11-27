@@ -99,6 +99,7 @@ parser.add_argument('--remark', default = '',
 parser.add_argument('--gd_config', default='SMG', type=str,
                     choices=['S', 'M', 'G', 'SM', 'SG', 'MG', 'SMG'],
                     help='global descriptors config')
+parser.add_argument('--experiment_name', default='proxy_anchor', type=str)
 
 args = parser.parse_args()
 
@@ -111,6 +112,8 @@ LOG_DIR = args.LOG_DIR + '/logs_{}/{}_{}_embedding{}_alpha{}_mrg{}_{}_lr{}_batch
 # Wandb Initialization
 wandb.init(project=args.dataset + '_ProxyAnchor', notes=LOG_DIR)
 wandb.config.update(args)
+wandb.run.name = args.experiment_name
+wandb.run.save()
 
 os.chdir('../data/')
 data_root = os.getcwd()
