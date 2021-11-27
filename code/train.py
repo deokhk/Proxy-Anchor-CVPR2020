@@ -207,8 +207,14 @@ else:
 nb_classes = trn_dataset.nb_classes()
 
 # Backbone Model
-if args.model == 'resnet50_cgd':
-    model = Resnet50_CGD(embedding_size=args.sz_embedding, pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze, gd_config=args.gd_config)
+if args.model == 'resnet18_cgd':
+    model = Resnet_CGD(embedding_size=args.sz_embedding, pretrained_model='resnet18', pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze, gd_config=args.gd_config)
+elif args.model == 'resnet34_cgd':
+    model = Resnet_CGD(embedding_size=args.sz_embedding, pretrained_model='resnet34', pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze, gd_config=args.gd_config)
+elif args.model == 'resnet50_cgd':
+    model = Resnet_CGD(embedding_size=args.sz_embedding, pretrained_model='resnet50', pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze, gd_config=args.gd_config)
+elif args.model == 'resnet101_cgd':
+    model = Resnet_CGD(embedding_size=args.sz_embedding, pretrained_model='resnet101', pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze, gd_config=args.gd_config)
 elif args.model.find('googlenet')+1:
     model = googlenet(embedding_size=args.sz_embedding, pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze)
 elif args.model.find('bn_inception')+1:

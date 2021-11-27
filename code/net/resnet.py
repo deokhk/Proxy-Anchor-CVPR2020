@@ -286,3 +286,52 @@ class Resnet50_CGD(nn.Module):
     
     def _initialize_weights(self):
         self.model.embedding._initialize_weights()
+
+class Resnet_General_Feature_Extraction(nn.Module):
+    def __init__(self, pretrained_model, pretrained=True, bn_freeze = True):
+        super().__init__()
+
+        pretrained_model_map = {
+            'resnet101': resnet101,
+            'resnet50': resnet50,
+            'resnet34': resnet34,
+            'resnet18': resnet18,
+        }
+        self.model = pretrained_model_map[pretrained_model](pretrained)
+
+        if bn_freeze:
+            for m in self.model.modules():
+                if isinstance(m, nn.BatchNorm2d):
+                    m.eval()
+                    m.weight.requires_grad_(False)
+                    m.bias.requires_grad_(False)
+
+    def forward(self, x):
+        x = self.model.conv1(x)
+        x = self.model.bn1(x)
+        x = self.model.relu(x)
+        x = self.model.maxpool(x)
+        x = self.model.layer1(x)
+        x = self.model.layer2(x)
+        x = self.model.layer3(x)
+        x = self.model.layer4(x)
+
+        return x
+
+class Resnet_CGD(Resnet_General_Feature_Extraction):
+    def __init__(self, embedding_size, pretrained_model='resnet50', pretrained=True, is_norm=True, bn_freeze = True, gd_config='SMG'):
+        super().__init__(pretrained_model, pretrained=pretrained, bn_freeze=bn_freeze)
+        self.is_norm = is_norm
+        self.embedding_size = embedding_size
+        self.num_ftrs = self.model.fc.in_features
+
+        self.model.embedding = CGD_GlobalDescriptor(self.num_ftrs, gd_config, embedding_size)
+        self._initialize_weights()        
+
+    def forward(self, x):
+        x = super().forward(x)
+        x = self.model.embedding(x)
+        return x
+
+    def _initialize_weights(self):
+        self.model.embedding._initialize_weights()
