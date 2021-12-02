@@ -1,0 +1,50 @@
+0: n11
+0: /home/deokhk/Proxy-Anchor-CVPR2020/code
+0: Sat Nov 27 21:59:30 KST 2021
+Sat Nov 27 21:59:30 KST 2021
+wandb: Currently logged in as: deokhk (use `wandb login --relogin` to force relogin)
+wandb: Tracking run with wandb version 0.12.7
+wandb: Syncing run upbeat-snow-36
+wandb: ⭐️ View project at https://wandb.ai/deokhk/cub_ProxyAnchor
+wandb: 🚀 View run at https://wandb.ai/deokhk/cub_ProxyAnchor/runs/11sqxada
+wandb: Run data is saved locally in /home/deokhk/Proxy-Anchor-CVPR2020/code/wandb/run-20211127_215941-11sqxada
+wandb: Run `wandb offline` to turn off syncing.
+[34m[1mwandb[0m: [33mWARNING[0m Calling run.save without any arguments is deprecated.Changes to attributes are automatically persisted.
+Downloading: "https://download.pytorch.org/models/resnet101-63fe2227.pth" to /home/deokhk/.cache/torch/hub/checkpoints/resnet101-63fe2227.pth
+
+Random Sampling
+  0% 0.00/171M [00:00<?, ?B/s]  1% 1.83M/171M [00:00<00:28, 6.17MB/s]  2% 3.67M/171M [00:02<01:56, 1.51MB/s]  3% 5.90M/171M [00:02<01:08, 2.54MB/s]  5% 8.93M/171M [00:03<00:55, 3.03MB/s]  7% 11.3M/171M [00:04<00:52, 3.19MB/s]  8% 13.6M/171M [00:08<02:03, 1.33MB/s]  8% 14.4M/171M [00:12<03:39, 747kB/s]   9% 14.9M/171M [00:16<05:32, 490kB/s] 10% 17.2M/171M [00:18<04:19, 619kB/s] 11% 18.1M/171M [00:26<07:24, 359kB/s] 11% 18.7M/171M [00:40<07:23, 359kB/s] 11% 18.7M/171M [01:40<54:42, 48.5kB/s] 11% 18.7M/171M [02:00<54:42, 48.5kB/s] 11% 18.7M/171M [05:46<46:46, 56.7kB/s]
+Traceback (most recent call last):
+  File "train.py", line 223, in <module>
+    model = Resnet_CGD(embedding_size=args.sz_embedding, pretrained_model='resnet101', pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze, gd_config=args.gd_config)
+  File "/home/deokhk/Proxy-Anchor-CVPR2020/code/net/resnet.py", line 323, in __init__
+    super().__init__(pretrained_model, pretrained=pretrained, bn_freeze=bn_freeze)
+  File "/home/deokhk/Proxy-Anchor-CVPR2020/code/net/resnet.py", line 300, in __init__
+    self.model = pretrained_model_map[pretrained_model](pretrained)
+  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/site-packages/torchvision/models/resnet.py", line 313, in resnet101
+    **kwargs)
+  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/site-packages/torchvision/models/resnet.py", line 263, in _resnet
+    progress=progress)
+  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/site-packages/torch/hub.py", line 586, in load_state_dict_from_url
+    download_url_to_file(url, cached_file, hash_prefix, progress=progress)
+  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/site-packages/torch/hub.py", line 474, in download_url_to_file
+    buffer = u.read(8192)
+  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/http/client.py", line 465, in read
+    n = self.readinto(b)
+  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/http/client.py", line 509, in readinto
+    n = self.fp.readinto(b)
+  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/socket.py", line 589, in readinto
+    return self._sock.recv_into(b)
+  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/ssl.py", line 1071, in recv_into
+    return self.read(nbytes, buffer)
+  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/ssl.py", line 929, in read
+    return self._sslobj.read(len, buffer)
+ConnectionResetError: [Errno 104] Connection reset by peer
+wandb: Waiting for W&B process to finish, PID 56300... (failed 1). Press ctrl-c to abort syncing.
+wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb:                                                                                
+wandb: Synced 6 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Synced upbeat-snow-36: https://wandb.ai/deokhk/cub_ProxyAnchor/runs/11sqxada
+wandb: Find logs at: /home/deokhk/Proxy-Anchor-CVPR2020/code/wandb/run-20211127_215941-11sqxada/logs/debug.log
+wandb: 
+
+Sat Nov 27 22:05:50 KST 2021

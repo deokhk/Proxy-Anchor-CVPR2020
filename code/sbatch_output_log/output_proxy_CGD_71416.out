@@ -13,4 +13,32 @@ wandb: Run `wandb offline` to turn off syncing.
 Downloading: "https://download.pytorch.org/models/googlenet-1378be20.pth" to /home/deokhk/.cache/torch/hub/checkpoints/googlenet-1378be20.pth
   0% 0.00/49.7M [00:00<?, ?B/s]
 Random Sampling
-  0% 240k/49.7M [00:00<00:46, 1.12MB/s]  1% 392k/49.7M [00:01<02:31, 340kB/s]   2% 1.00M/49.7M [00:01<01:27, 587kB/s]  2% 1.07M/49.7M [00:02<02:19, 365kB/s]  4% 1.99M/49.7M [00:03<01:03, 787kB/s]  5% 2.29M/49.7M [00:04<01:46, 467kB/s]  7% 3.38M/49.7M [00:04<00:48, 994kB/s]  8% 3.88M/49.7M [00:05<00:39, 1.22MB/s] 12% 5.73M/49.7M [00:05<00:29, 1.57MB/s] 14% 6.89M/49.7M [00:06<00:30, 1.47MB/s] 18% 8.92M/49.7M [00:07<00:16, 2.59MB/s] 23% 11.4M/49.7M [00:07<00:11, 3.52MB/s] 27% 13.5M/49.7M [00:07<00:07, 4.97MB/s] 30% 14.9M/49.7M [00:07<00:07, 4.62MB/s] 32% 15.8M/49.7M [00:09<00:15, 2.29MB/s] 33% 16.3M/49.7M [00:19<00:15, 2.29MB/s] 33% 16.3M/49.7M [00:22<02:07, 275kB/s]  33% 16.3M/49.7M [00:22<02:09, 271kB/s] 33% 16.4M/49.7M [00:40<02:09, 271kB/s] 33% 16.4M/49.7M [01:23<19:31, 29.9kB/s] 33% 16.4M/49.7M [01:31<22:36, 25.8kB/s] 33% 16.6M/49.7M [01:50<22:26, 25.8kB/s] 33% 16.6M/49.7M [01:51<26:52, 21.5kB/s] 34% 16.7M/49.7M [02:10<26:49, 21.5kB/s] 34% 16.7M/49.7M [02:11<36:19, 15.9kB/s] 34% 16.9M/49.7M [02:11<28:38, 20.0kB/s] 34% 17.1M/49.7M [02:11<19:19, 29.5kB/s] 40% 19.7M/49.7M [02:11<03:22, 155kB/s]  42% 21.0M/49.7M [02:19<03:00, 167kB/s] 43% 21.5M/49.7M [02:30<02:57, 167kB/s] 43% 21.5M/49.7M [02:34<04:58, 99.1kB/s] 43% 21.5M/49.7M [02:42<06:43, 73.3kB/s] 44% 22.0M/49.7M [02:43<04:54, 98.6kB/s] 45% 22.1M/49.7M [03:00<04:53, 98.6kB/s]
+  0% 240k/49.7M [00:00<00:46, 1.12MB/s]  1% 392k/49.7M [00:01<02:31, 340kB/s]   2% 1.00M/49.7M [00:01<01:27, 587kB/s]  2% 1.07M/49.7M [00:02<02:19, 365kB/s]  4% 1.99M/49.7M [00:03<01:03, 787kB/s]  5% 2.29M/49.7M [00:04<01:46, 467kB/s]  7% 3.38M/49.7M [00:04<00:48, 994kB/s]  8% 3.88M/49.7M [00:05<00:39, 1.22MB/s] 12% 5.73M/49.7M [00:05<00:29, 1.57MB/s] 14% 6.89M/49.7M [00:06<00:30, 1.47MB/s] 18% 8.92M/49.7M [00:07<00:16, 2.59MB/s] 23% 11.4M/49.7M [00:07<00:11, 3.52MB/s] 27% 13.5M/49.7M [00:07<00:07, 4.97MB/s] 30% 14.9M/49.7M [00:07<00:07, 4.62MB/s] 32% 15.8M/49.7M [00:09<00:15, 2.29MB/s] 33% 16.3M/49.7M [00:19<00:15, 2.29MB/s] 33% 16.3M/49.7M [00:22<02:07, 275kB/s]  33% 16.3M/49.7M [00:22<02:09, 271kB/s] 33% 16.4M/49.7M [00:40<02:09, 271kB/s] 33% 16.4M/49.7M [01:23<19:31, 29.9kB/s] 33% 16.4M/49.7M [01:31<22:36, 25.8kB/s] 33% 16.6M/49.7M [01:50<22:26, 25.8kB/s] 33% 16.6M/49.7M [01:51<26:52, 21.5kB/s] 34% 16.7M/49.7M [02:10<26:49, 21.5kB/s] 34% 16.7M/49.7M [02:11<36:19, 15.9kB/s] 34% 16.9M/49.7M [02:11<28:38, 20.0kB/s] 34% 17.1M/49.7M [02:11<19:19, 29.5kB/s] 40% 19.7M/49.7M [02:11<03:22, 155kB/s]  42% 21.0M/49.7M [02:19<03:00, 167kB/s] 43% 21.5M/49.7M [02:30<02:57, 167kB/s] 43% 21.5M/49.7M [02:34<04:58, 99.1kB/s] 43% 21.5M/49.7M [02:42<06:43, 73.3kB/s] 44% 22.0M/49.7M [02:43<04:54, 98.6kB/s] 45% 22.1M/49.7M [03:00<04:53, 98.6kB/s] 45% 22.1M/49.7M [04:08<31:02, 15.5kB/s] 45% 22.2M/49.7M [04:08<30:22, 15.9kB/s] 45% 22.2M/49.7M [04:20<30:21, 15.9kB/s] 45% 22.2M/49.7M [07:04<2:15:51, 3.54kB/s] 45% 22.2M/49.7M [07:04<2:10:07, 3.70kB/s] 45% 22.4M/49.7M [07:15<1:28:01, 5.42kB/s] 45% 22.5M/49.7M [07:25<1:36:44, 4.93kB/s] 45% 22.5M/49.7M [07:40<1:36:29, 4.93kB/s] 45% 22.5M/49.7M [07:41<09:18, 51.1kB/s]  
+Traceback (most recent call last):
+  File "train.py", line 225, in <module>
+    model = googlenet_cgd(embedding_size=args.sz_embedding, pretrained=True, bn_freeze = args.bn_freeze, gd_config=args.gd_config)
+  File "/home/deokhk/Proxy-Anchor-CVPR2020/code/net/googlenet.py", line 265, in __init__
+    self.model.load_state_dict(model_zoo.load_url(model_urls['googlenet']),strict=False)
+  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/site-packages/torch/hub.py", line 586, in load_state_dict_from_url
+    download_url_to_file(url, cached_file, hash_prefix, progress=progress)
+  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/site-packages/torch/hub.py", line 474, in download_url_to_file
+    buffer = u.read(8192)
+  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/http/client.py", line 465, in read
+    n = self.readinto(b)
+  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/http/client.py", line 509, in readinto
+    n = self.fp.readinto(b)
+  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/socket.py", line 589, in readinto
+    return self._sock.recv_into(b)
+  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/ssl.py", line 1071, in recv_into
+    return self.read(nbytes, buffer)
+  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/ssl.py", line 929, in read
+    return self._sslobj.read(len, buffer)
+ConnectionResetError: [Errno 104] Connection reset by peer
+wandb: Waiting for W&B process to finish, PID 42220... (failed 1). Press ctrl-c to abort syncing.
+wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb:                                                                                
+wandb: Synced 6 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Synced logical-terrain-14: https://wandb.ai/deokhk/cub_ProxyAnchor/runs/1fkarta3
+wandb: Find logs at: /home/deokhk/Proxy-Anchor-CVPR2020/code/wandb/run-20211127_211950-1fkarta3/logs/debug.log
+wandb: 
+
+Sat Nov 27 21:28:35 KST 2021

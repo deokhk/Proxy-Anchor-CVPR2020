@@ -1,0 +1,50 @@
+0: n12
+0: /home/deokhk/Proxy-Anchor-CVPR2020/code
+0: Sat Nov 27 22:04:32 KST 2021
+Sat Nov 27 22:04:32 KST 2021
+wandb: Currently logged in as: deokhk (use `wandb login --relogin` to force relogin)
+wandb: Tracking run with wandb version 0.12.7
+wandb: Syncing run fallen-fog-42
+wandb: ⭐️ View project at https://wandb.ai/deokhk/cub_ProxyAnchor
+wandb: 🚀 View run at https://wandb.ai/deokhk/cub_ProxyAnchor/runs/qzh7qzwp
+wandb: Run data is saved locally in /home/deokhk/Proxy-Anchor-CVPR2020/code/wandb/run-20211127_220446-qzh7qzwp
+wandb: Run `wandb offline` to turn off syncing.
+[34m[1mwandb[0m: [33mWARNING[0m Calling run.save without any arguments is deprecated.Changes to attributes are automatically persisted.
+Downloading: "https://download.pytorch.org/models/resnet101-63fe2227.pth" to /home/deokhk/.cache/torch/hub/checkpoints/resnet101-63fe2227.pth
+
+Random Sampling
+  0% 0.00/171M [00:00<?, ?B/s]  2% 2.59M/171M [00:00<00:20, 8.68MB/s]  2% 3.41M/171M [00:03<04:05, 713kB/s]   3% 4.70M/171M [00:04<02:29, 1.16MB/s]  4% 7.27M/171M [00:04<01:10, 2.41MB/s]  5% 8.77M/171M [00:04<01:02, 2.70MB/s]  7% 12.5M/171M [00:05<00:38, 4.32MB/s]  8% 14.3M/171M [00:05<00:49, 3.28MB/s]  9% 16.0M/171M [00:08<01:32, 1.75MB/s] 11% 18.1M/171M [00:10<01:41, 1.58MB/s] 11% 19.4M/171M [00:16<04:12, 629kB/s]  11% 19.4M/171M [00:29<04:11, 629kB/s] 11% 19.4M/171M [00:33<14:06, 187kB/s] 11% 19.5M/171M [00:50<14:05, 187kB/s] 11% 19.6M/171M [01:51<1:17:57, 33.8kB/s] 12% 19.8M/171M [01:51<1:11:31, 36.8kB/s] 12% 19.8M/171M [02:10<1:11:29, 36.8kB/s] 12% 19.8M/171M [05:40<43:05, 61.1kB/s]  
+Traceback (most recent call last):
+  File "train.py", line 223, in <module>
+    model = Resnet_CGD(embedding_size=args.sz_embedding, pretrained_model='resnet101', pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze, gd_config=args.gd_config)
+  File "/home/deokhk/Proxy-Anchor-CVPR2020/code/net/resnet.py", line 323, in __init__
+    super().__init__(pretrained_model, pretrained=pretrained, bn_freeze=bn_freeze)
+  File "/home/deokhk/Proxy-Anchor-CVPR2020/code/net/resnet.py", line 300, in __init__
+    self.model = pretrained_model_map[pretrained_model](pretrained)
+  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/site-packages/torchvision/models/resnet.py", line 313, in resnet101
+    **kwargs)
+  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/site-packages/torchvision/models/resnet.py", line 263, in _resnet
+    progress=progress)
+  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/site-packages/torch/hub.py", line 586, in load_state_dict_from_url
+    download_url_to_file(url, cached_file, hash_prefix, progress=progress)
+  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/site-packages/torch/hub.py", line 474, in download_url_to_file
+    buffer = u.read(8192)
+  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/http/client.py", line 465, in read
+    n = self.readinto(b)
+  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/http/client.py", line 509, in readinto
+    n = self.fp.readinto(b)
+  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/socket.py", line 589, in readinto
+    return self._sock.recv_into(b)
+  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/ssl.py", line 1071, in recv_into
+    return self.read(nbytes, buffer)
+  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/ssl.py", line 929, in read
+    return self._sslobj.read(len, buffer)
+ConnectionResetError: [Errno 104] Connection reset by peer
+wandb: Waiting for W&B process to finish, PID 77145... (failed 1). Press ctrl-c to abort syncing.
+wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb:                                                                                
+wandb: Synced 6 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Synced fallen-fog-42: https://wandb.ai/deokhk/cub_ProxyAnchor/runs/qzh7qzwp
+wandb: Find logs at: /home/deokhk/Proxy-Anchor-CVPR2020/code/wandb/run-20211127_220446-qzh7qzwp/logs/debug.log
+wandb: 
+
+Sat Nov 27 22:10:58 KST 2021

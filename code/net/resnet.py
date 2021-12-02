@@ -249,6 +249,11 @@ class Resnet101(nn.Module):
             x = self.l2_norm(x)
             
         return x
+        
+    def _initialize_weights(self):
+        init.kaiming_normal_(self.model.embedding.weight, mode='fan_out')
+        init.constant_(self.model.embedding.bias, 0)
+
 
 class Resnet50_CGD(nn.Module):
     def __init__(self,embedding_size, pretrained=True, is_norm=True, bn_freeze = True, 
