@@ -1,32 +1,0 @@
-0: n10
-0: /home/deokhk/Proxy-Anchor-CVPR2020/code
-0: Sun Nov 28 23:17:17 KST 2021
-Sun Nov 28 23:17:18 KST 2021
-wandb: Currently logged in as: deokhk (use `wandb login --relogin` to force relogin)
-wandb: Tracking run with wandb version 0.12.7
-wandb: Syncing run glamorous-spaceship-43
-wandb: ⭐️ View project at https://wandb.ai/deokhk/cub_ProxyAnchor
-wandb: 🚀 View run at https://wandb.ai/deokhk/cub_ProxyAnchor/runs/3h1efh7r
-wandb: Run data is saved locally in /home/deokhk/Proxy-Anchor-CVPR2020/code/wandb/run-20211128_231834-3h1efh7r
-wandb: Run `wandb offline` to turn off syncing.
-[34m[1mwandb[0m: [33mWARNING[0m Calling run.save without any arguments is deprecated.Changes to attributes are automatically persisted.
-Downloading: "https://download.pytorch.org/models/resnet101-63fe2227.pth" to /home/deokhk/.cache/torch/hub/checkpoints/resnet101-63fe2227.pth
-  0% 0.00/171M [00:00<?, ?B/s]
-Random Sampling
-  2% 2.68M/171M [00:00<00:20, 8.58MB/s]  3% 5.50M/171M [00:00<00:20, 8.38MB/s]  5% 9.19M/171M [00:00<00:11, 14.3MB/s]  7% 11.3M/171M [00:01<00:15, 10.8MB/s]  8% 12.8M/171M [00:01<00:19, 8.60MB/s]  9% 15.3M/171M [00:01<00:15, 10.8MB/s] 11% 18.2M/171M [00:01<00:15, 10.3MB/s] 12% 21.0M/171M [00:02<00:16, 9.47MB/s] 14% 23.9M/171M [00:02<00:12, 12.2MB/s] 16% 27.0M/171M [00:02<00:13, 11.2MB/s] 18% 29.9M/171M [00:03<00:14, 9.94MB/s] 20% 34.3M/171M [00:03<00:13, 10.7MB/s] 21% 36.4M/171M [00:04<00:20, 6.78MB/s] 23% 38.6M/171M [00:04<00:21, 6.31MB/s] 24% 40.6M/171M [00:04<00:18, 7.55MB/s] 24% 41.7M/171M [00:07<00:58, 2.30MB/s] 25% 43.3M/171M [00:07<00:55, 2.42MB/s] 26% 44.0M/171M [00:08<00:58, 2.27MB/s] 26% 45.1M/171M [00:08<00:58, 2.26MB/s] 27% 45.5M/171M [00:09<01:09, 1.88MB/s] 28% 47.3M/171M [00:09<00:53, 2.41MB/s] 29% 50.3M/171M [00:10<00:34, 3.63MB/s] 31% 53.4M/171M [00:10<00:21, 5.69MB/s] 33% 56.3M/171M [00:10<00:17, 6.67MB/s] 34% 57.3M/171M [00:10<00:19, 6.21MB/s] 35% 59.4M/171M [00:11<00:18, 6.44MB/s] 36% 62.2M/171M [00:11<00:16, 6.99MB/s] 39% 67.3M/171M [00:11<00:08, 12.2MB/s] 41% 69.4M/171M [00:11<00:10, 10.2MB/s] 42% 71.0M/171M [00:12<00:12, 8.54MB/s] 43% 73.0M/171M [00:12<00:10, 10.1MB/s] 45% 76.3M/171M [00:12<00:09, 10.4MB/s] 46% 79.2M/171M [00:12<00:10, 9.57MB/s] 49% 83.8M/171M [00:13<00:06, 14.3MB/s] 50% 85.9M/171M [00:13<00:07, 11.4MB/s] 51% 87.7M/171M [00:13<00:09, 9.21MB/s] 54% 92.5M/171M [00:13<00:05, 14.4MB/s] 56% 94.8M/171M [00:14<00:06, 11.8MB/s] 57% 96.7M/171M [00:14<00:08, 9.63MB/s] 59% 101M/171M [00:14<00:05, 14.1MB/s]  61% 103M/171M [00:14<00:05, 11.8MB/s] 62% 106M/171M [00:15<00:06, 10.1MB/s] 64% 108M/171M [00:15<00:05, 12.4MB/s] 65% 110M/171M [00:15<00:06, 9.45MB/s] 65% 112M/171M [00:15<00:06, 9.19MB/s] 66% 113M/171M [00:16<00:09, 6.32MB/s] 67% 114M/171M [00:16<00:12, 4.90MB/s] 67% 114M/171M [00:17<00:19, 3.03MB/s] 67% 115M/171M [00:17<00:22, 2.57MB/s] 68% 116M/171M [00:18<00:22, 2.56MB/s] 68% 116M/171M [00:18<00:26, 2.15MB/s] 68% 116M/171M [00:18<00:30, 1.85MB/s] 69% 118M/171M [00:19<00:17, 3.23MB/s] 70% 119M/171M [00:19<00:18, 2.98MB/s] 71% 121M/171M [00:19<00:11, 4.49MB/s] 73% 124M/171M [00:19<00:06, 7.69MB/s] 74% 126M/171M [00:20<00:05, 7.83MB/s] 76% 129M/171M [00:20<00:05, 8.41MB/s] 77% 132M/171M [00:20<00:03, 10.5MB/s] 79% 135M/171M [00:20<00:03, 10.5MB/s] 80% 137M/171M [00:21<00:03, 9.19MB/s] 81% 138M/171M [00:21<00:04, 7.23MB/s] 82% 140M/171M [00:21<00:04, 7.14MB/s] 84% 143M/171M [00:22<00:04, 7.16MB/s] 85% 144M/171M [00:22<00:03, 7.78MB/s] 85% 145M/171M [00:23<00:06, 4.05MB/s] 86% 146M/171M [00:23<00:05, 4.99MB/s] 86% 147M/171M [00:23<00:05, 4.25MB/s] 88% 150M/171M [00:23<00:03, 6.97MB/s] 89% 152M/171M [00:24<00:02, 7.41MB/s] 91% 155M/171M [00:24<00:02, 7.81MB/s] 93% 158M/171M [00:24<00:01, 10.2MB/s] 94% 161M/171M [00:24<00:00, 10.1MB/s] 96% 164M/171M [00:24<00:00, 13.1MB/s] 97% 166M/171M [00:25<00:00, 10.3MB/s]100% 170M/171M [00:25<00:00, 11.2MB/s]100% 171M/171M [00:25<00:00, 6.98MB/s]
-Traceback (most recent call last):
-  File "train.py", line 237, in <module>
-    model = Resnet101(embedding_size=args.sz_embedding, pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze)
-  File "/home/deokhk/Proxy-Anchor-CVPR2020/code/net/resnet.py", line 209, in __init__
-    self._initialize_weights()
-  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1178, in __getattr__
-    type(self).__name__, name))
-AttributeError: 'Resnet101' object has no attribute '_initialize_weights'
-wandb: Waiting for W&B process to finish, PID 133230... (failed 1). Press ctrl-c to abort syncing.
-wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb:                                                                                
-wandb: Synced 6 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-wandb: Synced glamorous-spaceship-43: https://wandb.ai/deokhk/cub_ProxyAnchor/runs/3h1efh7r
-wandb: Find logs at: /home/deokhk/Proxy-Anchor-CVPR2020/code/wandb/run-20211128_231834-3h1efh7r/logs/debug.log
-wandb: 
-
-Sun Nov 28 23:19:46 KST 2021

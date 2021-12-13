@@ -1,44 +1,0 @@
-0: n13
-0: /home/deokhk/Proxy-Anchor-CVPR2020/code
-0: Sat Nov 27 21:19:39 KST 2021
-Sat Nov 27 21:19:40 KST 2021
-wandb: Currently logged in as: deokhk (use `wandb login --relogin` to force relogin)
-wandb: Tracking run with wandb version 0.12.7
-wandb: Syncing run whole-pond-15
-wandb: ⭐️ View project at https://wandb.ai/deokhk/cub_ProxyAnchor
-wandb: 🚀 View run at https://wandb.ai/deokhk/cub_ProxyAnchor/runs/2q3ct8d8
-wandb: Run data is saved locally in /home/deokhk/Proxy-Anchor-CVPR2020/code/wandb/run-20211127_212006-2q3ct8d8
-wandb: Run `wandb offline` to turn off syncing.
-[34m[1mwandb[0m: [33mWARNING[0m Calling run.save without any arguments is deprecated.Changes to attributes are automatically persisted.
-Downloading: "https://download.pytorch.org/models/googlenet-1378be20.pth" to /home/deokhk/.cache/torch/hub/checkpoints/googlenet-1378be20.pth
-
-Random Sampling
-  0% 0.00/49.7M [00:00<?, ?B/s]  0% 40.0k/49.7M [00:00<10:54, 79.6kB/s]  0% 128k/49.7M [00:00<04:54, 177kB/s]    0% 152k/49.7M [00:01<05:47, 150kB/s]  1% 528k/49.7M [00:01<01:33, 552kB/s]  2% 1.00M/49.7M [00:19<01:32, 552kB/s]  2% 1.01M/49.7M [00:34<34:11, 24.9kB/s]  2% 1.02M/49.7M [00:50<34:11, 24.9kB/s]  2% 1.02M/49.7M [04:19<5:50:17, 2.43kB/s]  2% 1.05M/49.7M [04:30<5:50:07, 2.43kB/s]  2% 1.05M/49.7M [05:31<4:16:54, 3.31kB/s]
-Traceback (most recent call last):
-  File "train.py", line 225, in <module>
-    model = googlenet_cgd(embedding_size=args.sz_embedding, pretrained=True, bn_freeze = args.bn_freeze, gd_config=args.gd_config)
-  File "/home/deokhk/Proxy-Anchor-CVPR2020/code/net/googlenet.py", line 265, in __init__
-    self.model.load_state_dict(model_zoo.load_url(model_urls['googlenet']),strict=False)
-  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/site-packages/torch/hub.py", line 586, in load_state_dict_from_url
-    download_url_to_file(url, cached_file, hash_prefix, progress=progress)
-  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/site-packages/torch/hub.py", line 474, in download_url_to_file
-    buffer = u.read(8192)
-  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/http/client.py", line 465, in read
-    n = self.readinto(b)
-  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/http/client.py", line 509, in readinto
-    n = self.fp.readinto(b)
-  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/socket.py", line 589, in readinto
-    return self._sock.recv_into(b)
-  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/ssl.py", line 1071, in recv_into
-    return self.read(nbytes, buffer)
-  File "/home/deokhk/anaconda3/envs/cv_project/lib/python3.7/ssl.py", line 929, in read
-    return self._sslobj.read(len, buffer)
-ConnectionResetError: [Errno 104] Connection reset by peer
-wandb: Waiting for W&B process to finish, PID 60133... (failed 1). Press ctrl-c to abort syncing.
-wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb:                                                                                
-wandb: Synced 6 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-wandb: Synced whole-pond-15: https://wandb.ai/deokhk/cub_ProxyAnchor/runs/2q3ct8d8
-wandb: Find logs at: /home/deokhk/Proxy-Anchor-CVPR2020/code/wandb/run-20211127_212006-2q3ct8d8/logs/debug.log
-wandb: 
-
-Sat Nov 27 21:26:07 KST 2021

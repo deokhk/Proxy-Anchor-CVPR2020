@@ -3,3 +3,4 @@ logs/
 code/wandb
 **/__pycache__
 *.pyc
+code/sbatch_output_log/

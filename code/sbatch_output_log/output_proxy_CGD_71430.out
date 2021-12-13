@@ -1,17 +1,0 @@
-0: n13
-0: /home/deokhk/Proxy-Anchor-CVPR2020/code
-0: Sat Nov 27 21:28:17 KST 2021
-Sat Nov 27 21:28:19 KST 2021
-wandb: Currently logged in as: deokhk (use `wandb login --relogin` to force relogin)
-wandb: Tracking run with wandb version 0.12.7
-wandb: Syncing run quiet-plant-32
-wandb: ⭐️ View project at https://wandb.ai/deokhk/cub_ProxyAnchor
-wandb: 🚀 View run at https://wandb.ai/deokhk/cub_ProxyAnchor/runs/16inltpd
-wandb: Run data is saved locally in /home/deokhk/Proxy-Anchor-CVPR2020/code/wandb/run-20211127_212837-16inltpd
-wandb: Run `wandb offline` to turn off syncing.
-[34m[1mwandb[0m: [33mWARNING[0m Calling run.save without any arguments is deprecated.Changes to attributes are automatically persisted.
-
-Random Sampling
-Training parameters: {'LOG_DIR': '../logs', 'dataset': 'cub', 'sz_embedding': 512, 'sz_batch': 120, 'nb_epochs': 60, 'gpu_id': -1, 'nb_workers': 4, 'model': 'resnet50_cgd', 'loss': 'Proxy_Anchor', 'optimizer': 'adamw', 'lr': 0.0001, 'weight_decay': 0.0001, 'lr_decay_step': 5, 'lr_decay_gamma': 0.5, 'alpha': 32, 'mrg': 0.1, 'IPC': None, 'warm': 5, 'bn_freeze': 1, 'l2_norm': 1, 'remark': '', 'gd_config': 'mg', 'experiment_name': 'resnet50_cgd-mg'}
-Training for 60 epochs.
-0it [00:00, ?it/s]Train Epoch: 0 [1/48 (0%)] Loss: 11.862440: : 0it [00:06, ?it/s]Train Epoch: 0 [1/48 (0%)] Loss: 11.862440: : 1it [00:06,  6.01s/it]Train Epoch: 0 [2/48 (2%)] Loss: 11.592285: : 1it [00:06,  6.01s/it]Train Epoch: 0 [2/48 (2%)] Loss: 11.592285: : 2it [00:06,  2.57s/it]slurmstepd: error: *** JOB 71430 ON n13 CANCELLED AT 2021-11-28T15:56:33 ***

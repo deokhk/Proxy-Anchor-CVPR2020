@@ -1,17 +1,0 @@
-0: n10
-0: /home/deokhk/Proxy-Anchor-CVPR2020/code
-0: Sun Nov 28 23:17:24 KST 2021
-Sun Nov 28 23:17:24 KST 2021
-wandb: Currently logged in as: deokhk (use `wandb login --relogin` to force relogin)
-wandb: Tracking run with wandb version 0.12.7
-wandb: Syncing run restful-elevator-44
-wandb: ⭐️ View project at https://wandb.ai/deokhk/cub_ProxyAnchor
-wandb: 🚀 View run at https://wandb.ai/deokhk/cub_ProxyAnchor/runs/3har78rw
-wandb: Run data is saved locally in /home/deokhk/Proxy-Anchor-CVPR2020/code/wandb/run-20211128_231834-3har78rw
-wandb: Run `wandb offline` to turn off syncing.
-[34m[1mwandb[0m: [33mWARNING[0m Calling run.save without any arguments is deprecated.Changes to attributes are automatically persisted.
-Downloading: "https://download.pytorch.org/models/googlenet-1378be20.pth" to /home/deokhk/.cache/torch/hub/checkpoints/googlenet-1378be20.pth
-
-Random Sampling
-  0% 0.00/49.7M [00:00<?, ?B/s]  0% 8.00k/49.7M [00:03<5:25:47, 2.67kB/s]  0% 56.0k/49.7M [00:03<37:46, 23.0kB/s]    1% 456k/49.7M [00:03<03:49, 225kB/s]    3% 1.35M/49.7M [00:03<01:03, 805kB/s]  5% 2.32M/49.7M [00:04<00:38, 1.30MB/s]  9% 4.34M/49.7M [00:04<00:15, 3.02MB/s] 13% 6.65M/49.7M [00:04<00:10, 4.35MB/s] 19% 9.40M/49.7M [00:04<00:07, 5.55MB/s] 24% 12.1M/49.7M [00:05<00:05, 7.71MB/s] 30% 14.8M/49.7M [00:05<00:04, 8.01MB/s] 35% 17.3M/49.7M [00:05<00:04, 7.88MB/s] 43% 21.3M/49.7M [00:05<00:02, 12.1MB/s] 47% 23.2M/49.7M [00:06<00:02, 9.86MB/s] 52% 26.1M/49.7M [00:06<00:02, 9.11MB/s] 60% 29.9M/49.7M [00:06<00:01, 12.9MB/s] 64% 31.9M/49.7M [00:07<00:02, 8.75MB/s] 67% 33.4M/49.7M [00:07<00:02, 6.42MB/s] 71% 35.2M/49.7M [00:08<00:02, 5.89MB/s] 75% 37.4M/49.7M [00:08<00:01, 7.58MB/s] 79% 39.3M/49.7M [00:08<00:01, 7.30MB/s] 85% 42.2M/49.7M [00:12<00:04, 1.70MB/s] 87% 43.1M/49.7M [00:29<00:04, 1.70MB/s]wandb: Network error (ReadTimeout), entering retry loop.
-slurmstepd: error: *** JOB 71543 ON n10 CANCELLED AT 2021-12-01T23:17:41 DUE TO TIME LIMIT ***
