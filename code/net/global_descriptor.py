@@ -9,7 +9,7 @@ class L2Norm(nn.Module):
         super().__init__()
 
     def forward(self, x):
-        assert x.dim() == 2, 'the input tensor of L2Norm must be the shape of [B, C]'
+        assert x.dim() == 2, "the input tensor of L2Norm must be the shape of [B, C]"
         return F.normalize(x, p=2, dim=-1)
 
 
@@ -19,17 +19,21 @@ class GlobalDescriptor(nn.Module):
         self.p = p
 
     def forward(self, x):
-        assert x.dim() == 4, 'the input tensor of GlobalDescriptor must be the shape of [B, C, H, W]'
+        assert (
+            x.dim() == 4
+        ), "the input tensor of GlobalDescriptor must be the shape of [B, C, H, W]"
         if self.p == 1:
             return x.mean(dim=[-1, -2])
-        elif self.p == float('inf'):
-            return torch.flatten(F.adaptive_max_pool2d(x, output_size=(1, 1)), start_dim=1)
+        elif self.p == float("inf"):
+            return torch.flatten(
+                F.adaptive_max_pool2d(x, output_size=(1, 1)), start_dim=1
+            )
         else:
             sum_value = x.pow(self.p).mean(dim=[-1, -2])
             return torch.sign(sum_value) * (torch.abs(sum_value).pow(1.0 / self.p))
 
     def extra_repr(self):
-        return 'p={}'.format(self.p)
+        return "p={}".format(self.p)
 
 
 class CGD_GlobalDescriptor(nn.Module):
@@ -39,16 +43,18 @@ class CGD_GlobalDescriptor(nn.Module):
 
         self.global_descriptors, self.main_modules = [], []
         for i in range(n):
-            if gd_config[i].upper() == 'S':
+            if gd_config[i].upper() == "S":
                 p = 1
-            elif gd_config[i].upper() == 'M':
-                p = float('inf')
-            elif gd_config[i].upper() == 'G':
+            elif gd_config[i].upper() == "M":
+                p = float("inf")
+            elif gd_config[i].upper() == "G":
                 p = 3
             else:
-                raise KeyError('no such gd_config')
+                raise KeyError("no such gd_config")
             self.global_descriptors.append(GlobalDescriptor(p=p))
-            self.main_modules.append(nn.Sequential(nn.Linear(num_ftrs, feature_dim, bias=False), L2Norm()))
+            self.main_modules.append(
+                nn.Sequential(nn.Linear(num_ftrs, feature_dim, bias=False), L2Norm())
+            )
         self.global_descriptors = nn.ModuleList(self.global_descriptors)
         self.main_modules = nn.ModuleList(self.main_modules)
         self.fusion_layer = nn.Linear(n * feature_dim, feature_dim)
@@ -66,4 +72,4 @@ class CGD_GlobalDescriptor(nn.Module):
 
     def _initialize_weights(self):
         for main_module in self.main_modules:
-            init.kaiming_normal_(main_module[0].weight, mode='fan_out')
+            init.kaiming_normal_(main_module[0].weight, mode="fan_out")
