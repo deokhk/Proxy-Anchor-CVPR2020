@@ -1,7 +1,7 @@
 #!/bin/bash 
-python train.py --gpu-id -1 \
+python train.py --gpu-id 0 \
                 --loss Proxy_Anchor \
-                --model resnet101_cgd \
+                --model resnet50_cgd \
                 --embedding-size 512 \
                 --batch-size 120 \
                 --lr 1e-4 \
@@ -10,4 +10,4 @@ python train.py --gpu-id -1 \
                 --bn-freeze 1 \
                 --lr-decay-step 5 \
                 --gd_config smg \
-                --experiment_name resnet101_cgd-smg
+                --experiment_name rtx_resnet50_cgd-smg

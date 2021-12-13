@@ -1,5 +1,5 @@
 #!/bin/bash 
-python train.py --gpu-id -1 \
+python train.py --gpu-id 0 \
                 --loss Proxy_Anchor \
                 --model bn_inception \
                 --embedding-size 512 \
@@ -9,4 +9,4 @@ python train.py --gpu-id -1 \
                 --warm 1 \
                 --bn-freeze 1 \
                 --lr-decay-step 10
-                --experiment_name bn_inception_plain
+                --experiment_name rtx_bn_inception_plain

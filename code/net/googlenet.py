@@ -12,7 +12,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.utils import model_zoo
-from net.global_descriptor import CGD_GlobalDescriptor
+from net.global_descriptor import CGD_GlobalDescriptor, CGD_Globaldescriptor_addition
 
 __all__ = ['GoogLeNet', 'googlenet']
 
@@ -257,7 +257,7 @@ class googlenet(nn.Module):
         init.constant_(self.model.embedding.bias, 0)
 
 class googlenet_cgd(nn.Module):
-    def __init__(self,embedding_size, pretrained=True, bn_freeze = True, gd_config='SMG'):
+    def __init__(self,embedding_size, pretrained=True, bn_freeze = True, gd_config='SMG', use_addition=False):
         super().__init__()
 
         self.model = GoogLeNet()
@@ -267,10 +267,10 @@ class googlenet_cgd(nn.Module):
         self.transform_input=False
         self.embedding_size = embedding_size
         self.num_ftrs = self.model.fc.in_features
-        self.model.embedding = CGD_GlobalDescriptor(self.num_ftrs, gd_config, embedding_size)
-        self.model.gap = nn.AdaptiveAvgPool2d(1)
-        self.model.gmp = nn.AdaptiveMaxPool2d(1)
-        
+        if use_addition == False:
+            self.model.embedding = CGD_GlobalDescriptor(self.num_ftrs, gd_config, embedding_size)
+        else:
+            self.model.embedding = CGD_Globaldescriptor_addition(self.num_ftrs, gd_config, embedding_size)
         self._initialize_weights()
         
         if bn_freeze:

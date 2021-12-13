@@ -1,5 +1,5 @@
 #!/bin/bash 
-python train.py --gpu-id -1 \
+python train.py --gpu-id 0 \
                 --loss Proxy_Anchor \
                 --model googlenet_cgd \
                 --embedding-size 512 \
@@ -10,4 +10,4 @@ python train.py --gpu-id -1 \
                 --bn-freeze 1 \
                 --lr-decay-step 5 \
                 --gd_config S \
-                --experiment_name googlenet_S
+                --experiment_name rtx_googlenet_S

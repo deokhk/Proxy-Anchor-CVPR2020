@@ -1,5 +1,5 @@
 #!/bin/bash 
-python train.py --gpu-id -1 \
+python train.py --gpu-id 0 \
                 --loss Proxy_Anchor \
                 --model resnet50 \
                 --embedding-size 512 \
@@ -9,4 +9,4 @@ python train.py --gpu-id -1 \
                 --warm 5 \
                 --bn-freeze 1 \
                 --lr-decay-step 5 \
-                --experiment_name resnet50_plain
+                --experiment_name rtx_resnet50_plain

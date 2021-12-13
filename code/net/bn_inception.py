@@ -5,7 +5,7 @@ import torch.nn.functional as F
 import torch.utils.model_zoo as model_zoo
 import random
 
-from net.global_descriptor import CGD_GlobalDescriptor
+from net.global_descriptor import CGD_GlobalDescriptor, CGD_Globaldescriptor_addition
 
 __all__ = ['BNInception', 'bn_inception']
 
@@ -533,7 +533,7 @@ class BNInception(nn.Module):
 
 
 class bn_inception_cgd(nn.Module):
-    def __init__(self, embedding_size, pretrained = True, is_norm=True, bn_freeze = True, gd_config='SMG'):
+    def __init__(self, embedding_size, pretrained = True, is_norm=True, bn_freeze = True, gd_config='SMG', use_addition=False):
         super(bn_inception_cgd, self).__init__()
         self.model = BNInception(embedding_size, pretrained, is_norm)
         if pretrained:
@@ -545,7 +545,10 @@ class bn_inception_cgd(nn.Module):
         self.embedding_size = embedding_size       
         self.num_ftrs = self.model.num_ftrs
 
-        self.model.embedding = CGD_GlobalDescriptor(self.num_ftrs, gd_config, embedding_size)
+        if use_addition == False:
+            self.model.embedding = CGD_GlobalDescriptor(self.num_ftrs, gd_config, embedding_size)
+        else:
+            self.model.embedding = CGD_Globaldescriptor_addition(self.num_ftrs, gd_config, embedding_size)
         self._initialize_weights()
         
         if bn_freeze:

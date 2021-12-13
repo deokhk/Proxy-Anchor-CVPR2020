@@ -59,7 +59,7 @@
             "program": "train.py",
             "console": "integratedTerminal",
             "args": [
-                "--gpu-id", "-1",
+                "--gpu-id", "0",
                 "--loss", "Proxy_Anchor",
                 "--model", "resnet50_cgd",
                 "--embedding-size", "512",
@@ -70,10 +70,8 @@
                 "--bn-freeze", "1",
                 "--lr-decay-step", "10",
                 "--gd_config", "SMG",
+                "--use_addition_for_GD", "True",
             ],
-            "env": {
-                "CUDA_VISBLE_DEVICES": "7,6,5",
-            },
             "cwd": "${workspaceFolder}/code",
         },
         {
@@ -95,9 +93,6 @@
                 "--lr-decay-step", "10",
                 "--gd_config", "SMG",
             ],
-            "env": {
-                "CUDA_VISBLE_DEVICES": "7,6,5",
-            },
             "cwd": "${workspaceFolder}/code",
         }
     ]

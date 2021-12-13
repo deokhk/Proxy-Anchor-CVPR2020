@@ -67,3 +67,38 @@ class CGD_GlobalDescriptor(nn.Module):
     def _initialize_weights(self):
         for main_module in self.main_modules:
             init.kaiming_normal_(main_module[0].weight, mode='fan_out')
+
+class CGD_Globaldescriptor_addition(nn.Module):
+    def __init__(self, num_ftrs, gd_config, feature_dim):
+        super().__init__()
+        n = len(gd_config)
+
+        self.global_descriptors, self.main_modules = [], []
+        for i in range(n):
+            if gd_config[i].upper() == 'S':
+                p = 1
+            elif gd_config[i].upper() == 'M':
+                p = float('inf')
+            elif gd_config[i].upper() == 'G':
+                p = 3
+            else:
+                raise KeyError('no such gd_config')
+            self.global_descriptors.append(GlobalDescriptor(p=p))
+        
+        self.global_descriptors = nn.ModuleList(self.global_descriptors)
+        self.FFN = nn.Linear(num_ftrs, feature_dim)
+
+    def forward(self, x):
+        global_descriptors = []
+        for i in range(len(self.global_descriptors)):
+            global_descriptor = self.global_descriptors[i](x)
+            global_descriptors.append(global_descriptor)
+        global_descriptors = sum(global_descriptors)
+        global_descriptors = global_descriptors.view(global_descriptors.size(0), -1)
+        global_descriptors = self.FFN(global_descriptors)
+        global_descriptors = F.normalize(global_descriptors, dim=-1)
+        return global_descriptors
+
+    def _initialize_weights(self):
+        init.kaiming_normal_(self.FFN.weight, mode='fan_out')
+
