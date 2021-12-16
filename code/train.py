@@ -96,13 +96,27 @@ parser.add_argument('--l2-norm', default = 1, type = int,
 parser.add_argument('--remark', default = '',
     help = 'Any reamrk'
 )
-parser.add_argument('--gd_config', default='SMG', type=str,
+
+parser.add_argument('--gd_config', type=str,
                     choices=['S', 'M', 'G', 'SM', 'SG', 'MG', 'SMG',
                              's', 'm', 'g', 'sm', 'sg', 'mg', 'smg',],
                     help='global descriptors config')
+parser.add_argument('--gd_config_p1', type=float)
+parser.add_argument('--gd_config_p2', type=float)
+parser.add_argument('--gd_config_p3', type=float)
+
 parser.add_argument('--experiment_name', default='proxy_anchor', type=str)
 
 args = parser.parse_args()
+
+if args.gd_config and (args.gd_config_p1 or args.gd_config_p2 or args.gd_config_p3):
+    parser.error('gd_config and gd_config_p* is mutually exclusive')
+if args.gd_config:
+    gd_config = args.gd_config
+else:
+    gd_config = [args.gd_config_p1, args.gd_config_p2, args.gd_config_p3]
+    gd_config = filter(lambda x: isinstance(x, float), gd_config)
+    assert len(gd_config) > 1
 
 if args.gpu_id != -1:
     torch.cuda.set_device(args.gpu_id)
@@ -214,17 +228,17 @@ nb_classes = trn_dataset.nb_classes()
 
 # Backbone Model
 if args.model == 'resnet18_cgd':
-    model = Resnet_CGD(embedding_size=args.sz_embedding, pretrained_model='resnet18', pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze, gd_config=args.gd_config)
+    model = Resnet_CGD(embedding_size=args.sz_embedding, pretrained_model='resnet18', pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze, gd_config=gd_config)
 elif args.model == 'resnet34_cgd':
-    model = Resnet_CGD(embedding_size=args.sz_embedding, pretrained_model='resnet34', pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze, gd_config=args.gd_config)
+    model = Resnet_CGD(embedding_size=args.sz_embedding, pretrained_model='resnet34', pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze, gd_config=gd_config)
 elif args.model == 'resnet50_cgd':
-    model = Resnet_CGD(embedding_size=args.sz_embedding, pretrained_model='resnet50', pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze, gd_config=args.gd_config)
+    model = Resnet_CGD(embedding_size=args.sz_embedding, pretrained_model='resnet50', pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze, gd_config=gd_config)
 elif args.model == 'resnet101_cgd':
-    model = Resnet_CGD(embedding_size=args.sz_embedding, pretrained_model='resnet101', pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze, gd_config=args.gd_config)
+    model = Resnet_CGD(embedding_size=args.sz_embedding, pretrained_model='resnet101', pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze, gd_config=gd_config)
 elif args.model == 'googlenet_cgd':
-    model = googlenet_cgd(embedding_size=args.sz_embedding, pretrained=True, bn_freeze = args.bn_freeze, gd_config=args.gd_config)
+    model = googlenet_cgd(embedding_size=args.sz_embedding, pretrained=True, bn_freeze = args.bn_freeze, gd_config=gd_config)
 elif args.model == 'bn_inception_cgd':
-    model = bn_inception_cgd(embedding_size=args.sz_embedding, pretrained=True, bn_freeze = args.bn_freeze, gd_config=args.gd_config)
+    model = bn_inception_cgd(embedding_size=args.sz_embedding, pretrained=True, bn_freeze = args.bn_freeze, gd_config=gd_config)
 elif args.model.find('googlenet')+1:
     model = googlenet(embedding_size=args.sz_embedding, pretrained=True, is_norm=args.l2_norm, bn_freeze = args.bn_freeze)
 elif args.model.find('bn_inception')+1:

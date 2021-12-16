@@ -1,3 +1,4 @@
+from typing import List
 import torch
 from torch.nn import functional as F
 import torch.nn as nn
@@ -39,18 +40,24 @@ class GlobalDescriptor(nn.Module):
 class CGD_GlobalDescriptor(nn.Module):
     def __init__(self, num_ftrs, gd_config, feature_dim):
         super().__init__()
-        n = len(gd_config)
 
         self.global_descriptors, self.main_modules = [], []
+
+        n = len(gd_config)
         for i in range(n):
-            if gd_config[i].upper() == "S":
-                p = 1
-            elif gd_config[i].upper() == "M":
-                p = float("inf")
-            elif gd_config[i].upper() == "G":
-                p = 3
+            if isinstance(gd_config, str):
+                if gd_config[i].upper() == "S":
+                    p = 1
+                elif gd_config[i].upper() == "M":
+                    p = float("inf")
+                elif gd_config[i].upper() == "G":
+                    p = 3
+                else:
+                    raise KeyError("no such gd_config!")
+            elif isinstance(gd_config, List[float]):
+                p = gd_config[i]
             else:
-                raise KeyError("no such gd_config")
+                raise ValueError("wrong gd_config type!")
             self.global_descriptors.append(GlobalDescriptor(p=p))
             self.main_modules.append(
                 nn.Sequential(nn.Linear(num_ftrs, feature_dim, bias=False), L2Norm())
