@@ -10,7 +10,7 @@ from torchvision.models import resnet34
 from torchvision.models import resnet50
 from torchvision.models import resnet101
 import torch.utils.model_zoo as model_zoo
-from net.global_descriptor import CGD_GlobalDescriptor, CGD_Globaldescriptor_addition
+from net.global_descriptor import CGD_GlobalDescriptor, CGD_Globaldescriptor_GeM_Learnable, CGD_Globaldescriptor_addition
 
 class Resnet18(nn.Module):
     def __init__(self,embedding_size, pretrained=True, is_norm=True, bn_freeze = True):
@@ -298,6 +298,24 @@ class Resnet_CGD(Resnet_General_Feature_Extraction):
         else:
             self.model.embedding = CGD_Globaldescriptor_addition(self.num_ftrs, gd_config, embedding_size)
         self._initialize_weights()        
+
+    def forward(self, x):
+        x = super().forward(x)
+        x = self.model.embedding(x)
+        return x
+
+    def _initialize_weights(self):
+        self.model.embedding._initialize_weights()
+
+
+class Resnet_Learnable(Resnet_General_Feature_Extraction):
+    def __init__(self, embedding_size, pretrained_model='resnet50', pretrained=True, is_norm=True, bn_freeze = True, num_gds=2):
+        super().__init__(pretrained_model, pretrained=pretrained, bn_freeze=bn_freeze)
+        self.is_norm = is_norm
+        self.embedding_size = embedding_size
+        self.num_ftrs = self.model.fc.in_features
+        self.model.embedding = CGD_Globaldescriptor_GeM_Learnable(self.num_ftrs, num_gds, embedding_size)
+        self._initialize_weights()
 
     def forward(self, x):
         x = super().forward(x)

@@ -236,7 +236,17 @@ else:
 nb_classes = trn_dataset.nb_classes()
 
 # Backbone Model
-if args.model == "resnet18_cgd":
+if args.model.split('-')[0] == "resnet50_learnable":
+    num_gds = args.model.split('-')[1]
+    model = Resnet_Learnable(
+        embedding_size=args.sz_embedding,
+        pretrained_model="resnet50",
+        pretrained=True,
+        is_norm=args.l2_norm,
+        bn_freeze=args.bn_freeze,
+        num_gds=num_gds
+    )
+elif args.model == "resnet18_cgd":
     model = Resnet_CGD(
         embedding_size=args.sz_embedding,
         pretrained_model="resnet18",

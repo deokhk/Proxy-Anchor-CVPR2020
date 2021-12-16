@@ -32,6 +32,22 @@ class GlobalDescriptor(nn.Module):
         return 'p={}'.format(self.p)
 
 
+class GlobalDescriptor_GeM_Learnable(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.p = torch.nn.Parameter(torch.randn(1))
+
+    def forward(self, x):
+        assert x.dim() == 4, 'the input tensor of GlobalDescriptor must be the shape of [B, C, H, W]'
+        sum_value = x.pow(self.p).mean(dim=[-1, -2])
+                
+        return torch.sign(sum_value) * (torch.abs(sum_value).pow(1.0 / self.p))
+
+    def extra_repr(self):
+        return 'p={}'.format(self.p)
+
+
+
 class CGD_GlobalDescriptor(nn.Module):
     def __init__(self, num_ftrs, gd_config, feature_dim):
         super().__init__()
@@ -84,6 +100,31 @@ class CGD_Globaldescriptor_addition(nn.Module):
             else:
                 raise KeyError('no such gd_config')
             self.global_descriptors.append(GlobalDescriptor(p=p))
+        
+        self.global_descriptors = nn.ModuleList(self.global_descriptors)
+        self.FFN = nn.Linear(num_ftrs, feature_dim)
+
+    def forward(self, x):
+        global_descriptors = []
+        for i in range(len(self.global_descriptors)):
+            global_descriptor = self.global_descriptors[i](x)
+            global_descriptors.append(global_descriptor)
+        global_descriptors = sum(global_descriptors)
+        global_descriptors = global_descriptors.view(global_descriptors.size(0), -1)
+        global_descriptors = self.FFN(global_descriptors)
+        global_descriptors = F.normalize(global_descriptors, dim=-1)
+        return global_descriptors
+
+    def _initialize_weights(self):
+        init.kaiming_normal_(self.FFN.weight, mode='fan_out')
+
+
+class CGD_Globaldescriptor_GeM_Learnable(nn.Module):
+    def __init__(self, num_ftrs, num_gds, feature_dim):
+        super().__init__()
+        self.global_descriptors, self.main_modules = [], []
+        for _ in range(num_gds):
+            self.global_descriptors.append(GlobalDescriptor_GeM_Learnable())
         
         self.global_descriptors = nn.ModuleList(self.global_descriptors)
         self.FFN = nn.Linear(num_ftrs, feature_dim)
