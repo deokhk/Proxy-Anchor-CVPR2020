@@ -1,13 +1,14 @@
-#!/bin/bash 
-python train.py --gpu-id 0 \
+#!/bin/bash
+python train.py --gpu-id -1 \
                 --loss Proxy_Anchor \
-                --model bn_inception_cgd \
-                --embedding-size 512 \
-                --batch-size 180 \
+                --model googlenet_cgd \
+                --embedding-size 128 \
+                --batch-size 120 \
                 --lr 1e-4 \
                 --dataset cub \
-                --warm 1 \
+                --warm 5 \
                 --bn-freeze 1 \
-                --lr-decay-step 10 \
-                --gd_config S \
-                --experiment_name rtx_bn_inception_S
+                --lr-decay-step 5 \
+                --gd_config SMG \
+                --use_addition_for_GD True \
+                --experiment_name googlenet_cgd_addition_128

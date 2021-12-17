@@ -1,13 +1,13 @@
 #!/bin/bash 
-python train.py --gpu-id 0 \
+python train.py --gpu-id -1 \
                 --loss Proxy_Anchor \
-                --model resnet101_cgd \
+                --model bn_inception_cgd \
                 --embedding-size 512 \
-                --batch-size 120 \
+                --batch-size 180 \
                 --lr 1e-4 \
                 --dataset cub \
-                --warm 5 \
+                --warm 1 \
                 --bn-freeze 1 \
-                --lr-decay-step 5 \
-                --gd_config sm \
-                --experiment_name rtx_resnet101_cgd-sm
+                --lr-decay-step 10 \
+                --gd_config SG \
+                --experiment_name bn_inception_cgd_new_version_SG

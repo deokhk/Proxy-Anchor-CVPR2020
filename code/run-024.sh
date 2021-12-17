@@ -1,13 +1,14 @@
-#!/bin/bash 
-python train.py --gpu-id 0 \
+#!/bin/bash
+python train.py --gpu-id -1 \
                 --loss Proxy_Anchor \
-                --model resnet50_cgd \
-                --embedding-size 512 \
+                --model googlenet_cgd \
+                --embedding-size 256 \
                 --batch-size 120 \
                 --lr 1e-4 \
                 --dataset cub \
                 --warm 5 \
                 --bn-freeze 1 \
                 --lr-decay-step 5 \
-                --gd_config m \
-                --experiment_name rtx_resnet50_cgd-m
+                --gd_config SMG \
+                --use_addition_for_GD True \
+                --experiment_name googlenet_cgd_addition_256
