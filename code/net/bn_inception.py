@@ -536,7 +536,7 @@ class BNInception(nn.Module):
 class BNInception_for_cgd(nn.Module):
 
     def __init__(self, embedding_size, pretrained = True, is_norm=True):
-        super(BNInception, self).__init__()
+        super(BNInception_for_cgd, self).__init__()
 
         inplace = True
         self.embedding_size = embedding_size
