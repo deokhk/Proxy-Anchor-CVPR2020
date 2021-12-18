@@ -115,6 +115,8 @@ def _parse_arguments():
 def _load_dataset(args):
     os.chdir("../data/")
     data_root = os.getcwd()
+
+    dl_tr, dl_ev, dl_query, dl_gallery, nb_classes = None, None, None, None, None
     # Dataset Loader and Sampler
     if args.dataset != "Inshop":
         trn_dataset = dataset.load(
@@ -214,7 +216,6 @@ def _load_dataset(args):
     nb_classes = trn_dataset.nb_classes()
 
     return dl_tr, dl_ev, dl_query, dl_gallery, nb_classes
-
 
 def _construct_model(args):
     # Backbone Model
