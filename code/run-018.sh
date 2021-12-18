@@ -11,4 +11,4 @@ python train.py --gpu-id -1 \
                 --lr-decay-step 5 \
                 --gd_config SMG \
                 --use_addition_for_GD True \
-                --experiment_name resnet50_cgd_addition_256
+                --experiment_name cse_resnet50_cgd_addition_256

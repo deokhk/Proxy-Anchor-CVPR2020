@@ -10,4 +10,4 @@ python train.py --gpu-id -1 \
                 --bn-freeze 1 \
                 --lr-decay-step 10 \
                 --gd_config SMG \
-                --experiment_name bn_inception_cgd_256
+                --experiment_name cse_bn_inception_cgd_256

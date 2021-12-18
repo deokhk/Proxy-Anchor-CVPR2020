@@ -11,4 +11,4 @@ python train.py --gpu-id -1 \
                 --lr-decay-step 10 \
                 --gd_config SMG \
                 --use_addition_for_GD True \
-                --experiment_name bn_inception_cgd_addition_256
+                --experiment_name cse_bn_inception_cgd_addition_256

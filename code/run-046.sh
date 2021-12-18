@@ -2,7 +2,7 @@
 python train.py --gpu-id -1 \
                 --loss Proxy_Anchor \
                 --model bn_inception_cgd \
-                --embedding-size 128 \
+                --embedding-size 1024 \
                 --batch-size 180 \
                 --lr 1e-4 \
                 --dataset cub \
@@ -11,4 +11,4 @@ python train.py --gpu-id -1 \
                 --lr-decay-step 10 \
                 --gd_config SMG \
                 --use_addition_for_GD True \
-                --experiment_name cse_bn_inception_cgd_addition_128
+                --experiment_name cse_bn_inception_cgd_addition_1024

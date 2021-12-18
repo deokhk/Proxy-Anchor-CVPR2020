@@ -9,4 +9,4 @@ python train.py --gpu-id -1 \
                 --bn-freeze 1 \
                 --lr-decay-step 5 \
                 --gd_config SMG \
-                --experiment_name resnet50_cgd_128
+                --experiment_name cse_resnet50_cgd_128

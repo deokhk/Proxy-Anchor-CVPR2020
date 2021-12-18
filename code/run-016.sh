@@ -11,4 +11,4 @@ python train.py --gpu-id -1 \
                 --lr-decay-step 5 \
                 --gd_config SMG \
                 --use_addition_for_GD True \
-                --experiment_name googlenet_cgd_addition_128
+                --experiment_name cse_googlenet_cgd_addition_128

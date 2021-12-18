@@ -10,4 +10,4 @@ python train.py --gpu-id -1 \
                 --bn-freeze 1 \
                 --lr-decay-step 5 \
                 --gd_config SMG \
-                --experiment_name googlenet_cgd_256
+                --experiment_name cse_googlenet_cgd_256
