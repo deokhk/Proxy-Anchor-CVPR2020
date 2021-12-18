@@ -1,7 +1,7 @@
 python train.py --gpu-id -1 \
                 --loss Proxy_Anchor \
                 --model resnet50_cgd \
-                --embedding-size 64 \
+                --embedding-size 512 \
                 --batch-size 120 \
                 --lr 1e-4 \
                 --dataset cub \
@@ -9,4 +9,5 @@ python train.py --gpu-id -1 \
                 --bn-freeze 1 \
                 --lr-decay-step 5 \
                 --gd_config SMG \
-                --experiment_name resnet50_cgd_64
+                --fusion_type concat \
+                --experiment_name resnet50_cgd_concat

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH -J proxy_anchor_BN_new_test # job name
+#SBATCH -J proxy_anchor_256_1024 # job name
 #SBATCH -o sbatch_output_log/output_%x_%j.out # standard output and error log
 #SBATCH -p A100-pci # queue name or partiton name
 #SBATCH -t 72:00:00 # Run time (hh:mm:ss)
@@ -16,19 +16,21 @@ srun -l /bin/date
 
 ml purge
 date
-sh run-025.sh;
-sh run-026.sh;
-sh run-027.sh;
-sh run-028.sh;
-sh run-029.sh;
-sh run-030.sh;
-sh run-031.sh;
-sh run-33.sh;
-sh run-34.sh;
-sh run-35.sh;
-sh run-36.sh;
-sh run-37.sh;
-sh run-38.sh;
-sh run-39.sh;
+sh run-017.sh;
+sh run-018.sh;
+sh run-019.sh;
+sh run-020.sh;
+sh run-021.sh;
+sh run-022.sh;
+sh run-023.sh;
+sh run-024.sh;
+sh run-41.sh;
+sh run-42.sh;
+sh run-43.sh;
+sh run-44.sh;
+sh run-45.sh;
+sh run-46.sh;
+sh run-47.sh;
+sh run-48.sh;
 
 date

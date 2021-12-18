@@ -106,8 +106,7 @@ def _parse_arguments():
         help="global descriptors config",
     )
     parser.add_argument("--experiment_name", default="proxy_anchor", type=str)
-    parser.add_argument("--use_addition_for_GD", default=False, type=bool)
-
+    parser.add_argument("--fusion_type", default="addition", type=str)
     args = parser.parse_args()
 
     return args
@@ -227,7 +226,7 @@ def _construct_model(args):
             is_norm=args.l2_norm,
             bn_freeze=args.bn_freeze,
             gd_config=args.gd_config,
-            use_addition=args.use_addition_for_GD,
+            fusion_type=args.fusion_type,
         )
     elif args.model == "resnet34_cgd":
         model = Resnet_CGD(
@@ -237,7 +236,7 @@ def _construct_model(args):
             is_norm=args.l2_norm,
             bn_freeze=args.bn_freeze,
             gd_config=args.gd_config,
-            use_addition=args.use_addition_for_GD,
+            fusion_type=args.fusion_type,
         )
     elif args.model == "resnet50_cgd":
         model = Resnet_CGD(
@@ -247,7 +246,7 @@ def _construct_model(args):
             is_norm=args.l2_norm,
             bn_freeze=args.bn_freeze,
             gd_config=args.gd_config,
-            use_addition=args.use_addition_for_GD,
+            fusion_type=args.fusion_type,
         )
     elif args.model == "resnet101_cgd":
         model = Resnet_CGD(
@@ -257,7 +256,7 @@ def _construct_model(args):
             is_norm=args.l2_norm,
             bn_freeze=args.bn_freeze,
             gd_config=args.gd_config,
-            use_addition=args.use_addition_for_GD,
+            fusion_type=args.fusion_type,
         )
     elif args.model == "googlenet_cgd":
         model = googlenet_cgd(
@@ -265,7 +264,7 @@ def _construct_model(args):
             pretrained=True,
             bn_freeze=args.bn_freeze,
             gd_config=args.gd_config,
-            use_addition=args.use_addition_for_GD,
+            fusion_type=args.fusion_type,
         )
     elif args.model == "bn_inception_cgd":
         model = bn_inception_cgd(
@@ -273,7 +272,7 @@ def _construct_model(args):
             pretrained=True,
             bn_freeze=args.bn_freeze,
             gd_config=args.gd_config,
-            use_addition=args.use_addition_for_GD,
+            fusion_type=args.fusion_type,
         )
     elif args.model.find("googlenet") + 1:
         model = googlenet(
