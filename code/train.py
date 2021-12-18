@@ -236,15 +236,15 @@ else:
 nb_classes = trn_dataset.nb_classes()
 
 # Backbone Model
-if args.model.split('-')[0] == "resnet50_learnable":
-    num_gds = args.model.split('-')[1]
+if args.model.split("-")[0] == "resnet50_learnable":
+    num_gds = int(args.model.split("-")[1])
     model = Resnet_Learnable(
         embedding_size=args.sz_embedding,
         pretrained_model="resnet50",
         pretrained=True,
         is_norm=args.l2_norm,
         bn_freeze=args.bn_freeze,
-        num_gds=num_gds
+        num_gds=num_gds,
     )
 elif args.model == "resnet18_cgd":
     model = Resnet_CGD(
@@ -364,25 +364,64 @@ elif args.loss == "NPair":
     criterion = losses.NPairLoss().cuda()
 
 # Train Parameters
-param_groups = [
-    {
-        "params": list(
-            set(model.parameters()).difference(set(model.model.embedding.parameters()))
-        )
-        if args.gpu_id != -1
-        else list(
-            set(model.module.parameters()).difference(
-                set(model.module.model.embedding.parameters())
+if args.model.split("-")[0] == "resnet50_learnable":
+    param_groups = [
+        {
+            "params": list(
+                set(model.parameters()).difference(
+                    set(model.model.embedding.parameters())
+                )
             )
-        )
-    },
-    {
-        "params": model.model.embedding.parameters()
-        if args.gpu_id != -1
-        else model.module.model.embedding.parameters(),
-        "lr": float(args.lr) * 1,
-    },
-]
+            if args.gpu_id != -1
+            else list(
+                set(model.module.parameters()).difference(
+                    set(model.module.model.embedding.parameters())
+                )
+            )
+        },
+        {
+            "params": list(
+                set(model.model.embedding.parameters()).difference(
+                    set(model.model.embedding.global_descriptors.parameters())
+                )
+            )
+            if args.gpu_id != -1
+            else list(
+                set(model.module.model.embedding.parameters()).difference(
+                    set(model.module.model.embedding.global_descriptors.parameters())
+                )
+            ),
+            "lr": float(args.lr) * 1,
+        },
+        {
+            "params": model.model.embedding.global_descriptors.parameters()
+            if args.gpu_id != -1
+            else model.module.model.embedding.global_descriptors.parameters(),
+            "lr": float(args.lr) * 0.01,
+        },
+    ]
+else:
+    param_groups = [
+        {
+            "params": list(
+                set(model.parameters()).difference(
+                    set(model.model.embedding.parameters())
+                )
+            )
+            if args.gpu_id != -1
+            else list(
+                set(model.module.parameters()).difference(
+                    set(model.module.model.embedding.parameters())
+                )
+            )
+        },
+        {
+            "params": model.model.embedding.parameters()
+            if args.gpu_id != -1
+            else model.module.model.embedding.parameters(),
+            "lr": float(args.lr) * 1,
+        },
+    ]
 if args.loss == "Proxy_Anchor":
     param_groups.append({"params": criterion.proxies, "lr": float(args.lr) * 100})
 
@@ -460,6 +499,9 @@ for epoch in range(0, args.nb_epochs):
     pbar = tqdm(enumerate(dl_tr))
 
     for batch_idx, (x, y) in pbar:
+        for name, p in model.named_parameters():
+            if name == "module.model.embedding.global_descriptors.0.p":
+                print(p)
         m = model(x.squeeze().cuda())
         loss = criterion(m, y.squeeze().cuda())
 
@@ -485,6 +527,9 @@ for epoch in range(0, args.nb_epochs):
 
     losses_list.append(np.mean(losses_per_epoch))
     wandb.log({"loss": losses_list[-1]}, step=epoch)
+    for name, p in model.named_parameters():
+        if name == "module.model.embedding.global_descriptors.0.p":
+            wandb.log({"parameter p": p}, step=epoch)
     scheduler.step()
 
     if epoch >= 0:

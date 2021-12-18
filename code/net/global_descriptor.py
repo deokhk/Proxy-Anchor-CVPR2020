@@ -35,13 +35,15 @@ class GlobalDescriptor(nn.Module):
 class GlobalDescriptor_GeM_Learnable(nn.Module):
     def __init__(self):
         super().__init__()
-        self.p = torch.nn.Parameter(torch.randn(1))
+        # self.p = torch.nn.Parameter(torch.ones(1))
+        self.p = torch.ones(1).to(torch.device("cuda:0"))
 
     def forward(self, x):
         assert x.dim() == 4, 'the input tensor of GlobalDescriptor must be the shape of [B, C, H, W]'
-        sum_value = x.pow(self.p).mean(dim=[-1, -2])
+        ranged_p = torch.sigmoid(self.p) * 20.0
+        sum_value = x.pow(ranged_p).mean(dim=[-1, -2])
                 
-        return torch.sign(sum_value) * (torch.abs(sum_value).pow(1.0 / self.p))
+        return torch.sign(sum_value) * (torch.abs(sum_value).pow(1.0 / ranged_p))
 
     def extra_repr(self):
         return 'p={}'.format(self.p)

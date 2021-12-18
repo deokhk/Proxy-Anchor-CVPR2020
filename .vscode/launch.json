@@ -5,6 +5,28 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "train-resnet50_learnable-1",
+            "type": "python",
+            "request": "launch",
+            "program": "train.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--gpu-id", "-1",
+                "--loss", "Proxy_Anchor",
+                "--model", "resnet50_learnable-1",
+                "--embedding-size", "512",
+                "--batch-size", "120",
+                "--lr", "1e-4",
+                "--dataset", "cub",
+                "--warm", "5",
+                "--bn-freeze", "1",
+                "--lr-decay-step", "5",
+            ],
+            "cwd": "${workspaceFolder}/code",
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "7",
+            },
+        },        {
             "name": "train-bn_inception_cgd",
             "type": "python",
             "request": "launch",
